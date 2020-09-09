@@ -24,7 +24,7 @@ app.get("/search/:terms", (req, res) => {
     res.json(results);
   });
 });
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
 
 /*function express2() {
   const app = { listen: function () {}, get: function () {} };
