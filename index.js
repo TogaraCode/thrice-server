@@ -3,6 +3,8 @@
 // npx is for running scripts eg. npx create-react-app togaruber
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+
 const app = express();
 
 var search = require("youtube-search");
@@ -18,8 +20,9 @@ app.get("/", (req, res) => {
 
 app.get("/search/:terms", (req, res) => {
   const { terms } = req.params;
+  console.log(terms);
   search(terms, opts, function (err, results) {
-    if (err) return console.log(err);
+    if (err) return res.json(err);
 
     res.json(results);
   });
